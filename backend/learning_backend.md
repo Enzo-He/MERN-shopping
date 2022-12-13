@@ -5,7 +5,7 @@
 <!-- dev means only for development environment -->
 4. npm i nodemon --save-dev
     - npm uninstall nodemon
-<!-- 开始listening on port 3000 -->
+<!-- 开始listening on port 3000 输入下面的，开始监听服务器 -->
 5. npx nodemon server.js
     - [copy past hello word example](https://expressjs.com/en/starter/hello-world.html)  
     - copy past "hello word example" into server.js  
@@ -27,6 +27,9 @@
     - 因为express不能handle fault image uploading files，需要加装一个包支持
     - 安装之后，在server里写入新的包
     - POSTMAN -> body -> form-data -> key:images 右边选择files，不要选text -> upload images
+14. npm i jsonwebtoken
+    - 搞token的一个package
+
 
 # 一些解释
 ## 中英互译  
