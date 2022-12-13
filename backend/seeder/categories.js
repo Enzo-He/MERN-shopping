@@ -1,5 +1,5 @@
 const categories = [
-    {
+  {
     name: "Computers",
     description:
       "Computers - Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, magnam qui. Accusamus similique placeat at nisi autem eaque molestiae velit.",
