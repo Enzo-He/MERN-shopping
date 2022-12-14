@@ -32,25 +32,33 @@ const importData = async () => {
         await User.collection.deleteMany({})
         await Order.collection.deleteMany({})
 
-        //写入categoryData
-        await Category.insertMany(categoryData)
-        //下面几行的功能： Add Reviews Relationship To Products Collection
-        //主要逻辑：从products arry里面调取review，然后返回新array
-        //map products，然后在里面map reviews，就添加review进入products，最后返回新的products array,并写入数据库
-        //这里并不是把实际的reviews添加入products，而是一些特定id
-        const reviews = await Review.insertMany(reviewData)
-        const sampleProducts = productData.map((product) =>{
-            reviews.map((review) => {
-                product.reviews.push(review._id)
-            })
-            return {...product}
-        })
-        await Product.insertMany(sampleProducts);
-        await User.insertMany(userData)
-        await Order.insertMany(orderData)
 
-        console.log("Seeder data proceeded successfully")
-        process.exit()
+
+        if (process.argv[2] !== "-d") {
+            //写入categoryData
+            await Category.insertMany(categoryData)
+            //下面几行的功能： Add Reviews Relationship To Products Collection
+            //主要逻辑：从products arry里面调取review，然后返回新array
+            //map products，然后在里面map reviews，就添加review进入products，最后返回新的products array,并写入数据库
+            //这里并不是把实际的reviews添加入products，而是一些特定id
+            const reviews = await Review.insertMany(reviewData)
+            const sampleProducts = productData.map((product) => {
+                reviews.map((review) => {
+                    product.reviews.push(review._id)
+                })
+                return { ...product }
+            })
+            await Product.insertMany(sampleProducts);
+            await User.insertMany(userData)
+            await Order.insertMany(orderData)
+
+            console.log("Seeder data imported successfully")
+            process.exit()
+            return
+        }
+        console.log("Seeder data deleted successfully");
+        process.exit();
+
     } catch (error) {
         console.error("Error while proccessing seeder data", error)
         process.exit(1);
@@ -59,4 +67,4 @@ const importData = async () => {
 importData()
 
 // node seeder/seeder 运行seeder里的seeder.js 来添加dome data进database
- 
+

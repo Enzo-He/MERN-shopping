@@ -1,9 +1,12 @@
 const express = require("express");
 const fileUpload = require("express-fileupload")
+const cookieParser = require("cookie-parser")
 const app = express();
-const port = 3000;
+/* localhost:5000 */
+const port = 5000;
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(fileUpload())
 
 const apiRoutes = require("./routes/apiRoutes");
@@ -39,16 +42,25 @@ app.use("/api", apiRoutes);
 
 //自定义的middleware，来handle errors
 app.use((error, req, res, next) => {
-  //这个middleware仅仅showing the error in the console
-  console.error(error);
+  /* 就是用env.NODE_ENV保护数据，如果黑客进来了，没有权限，也看不到error的消息 */
+  if (process.env.NODE_ENV === "development") {
+    //这个middleware仅仅showing the error in the console
+    console.error(error);
+  }
   next(error);
 });
 app.use((error, req, res, next) => {
-  res.status(500).json({
-    // message and stack 给我们展示了error的path to the file
-    message: error.message,
-    stack: error.stack,
-  });
+  if (process.env.NODE_ENV === "development") {
+    res.status(500).json({
+      // message and stack 给我们展示了error的path to the file
+      message: error.message,
+      stack: error.stack,
+    });
+  } else {
+    res.status(500).json({
+      message: error.message,
+    })
+  }
 });
 
 // 我们不需要一个一个的写api的routes

@@ -29,11 +29,18 @@
     - POSTMAN -> body -> form-data -> key:images 右边选择files，不要选text -> upload images
 14. npm i jsonwebtoken
     - 搞token的一个package
-
+15. npm i cookie-parser
+    - 因为express不能handle cookie token，就是不能直接读取，所以需要安装一个
+16. npm i concurrently
+    - 目前也不太懂，看起像是组合键
 
 # 一些解释
 ## 中英互译  
 - square braces 中括号  
+## put post get delete
+- put 是 updating
+## 在package.json里写一些自己的启动代码 backend folder
+
 ## req, res, next
 ```js
 app.use((error, req, res, next) => {
