@@ -6,7 +6,15 @@ import PriceFilterComponent from "../components/filterQueryResultOptions/PriceFi
 import RatingFilterComponent from "../components/filterQueryResultOptions/RatingFilterComponent";
 import CategoryFilterComponent from "../components/filterQueryResultOptions/CategoryFilterComponent";
 import AttributesFilterComponent from "../components/filterQueryResultOptions/AttributesFilterComponent";
+
+/* 用来搞api */
+import axios from "axios"
+
 const ProductListPage = () => {
+  /* 新加的api
+  去package.json里面加上一句话："proxy": "http://localhost:5000",这样就能把api指向到localhost：5000，服务器在5000*/
+  axios.get("/api/products").then((res) => console.log(res));
+
   return (
     <Container fluid>
       <Row>

@@ -13,6 +13,8 @@ indentation 缩进
     - npm install js-image-zoom@^0.7.0
     <!-- 直接安装，不要版本信息 -->
     - npm install recharts
+    <!-- 用来make api requests -->
+    - npm i axios
 
 # Route  
 ```js
