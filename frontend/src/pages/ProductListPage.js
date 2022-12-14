@@ -7,13 +7,13 @@ import RatingFilterComponent from "../components/filterQueryResultOptions/Rating
 import CategoryFilterComponent from "../components/filterQueryResultOptions/CategoryFilterComponent";
 import AttributesFilterComponent from "../components/filterQueryResultOptions/AttributesFilterComponent";
 
-/* 用来搞api */
-import axios from "axios"
+/* 用来搞api, 下面的代码就是在这儿测试一下，能否链接，如能，就可以comment掉了 */
+/* import axios from "axios" */
 
 const ProductListPage = () => {
   /* 新加的api
   去package.json里面加上一句话："proxy": "http://localhost:5000",这样就能把api指向到localhost：5000，服务器在5000*/
-  axios.get("/api/products").then((res) => console.log(res));
+/*   axios.get("/api/products").then((res) => console.log(res)); */
 
   return (
     <Container fluid>
