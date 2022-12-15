@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken")
 const verifyIsLoggedIn = (req, res, next) => {
+    next()
+    return // to do: remove later
     try {
         const token = req.cookies.access_token
         if(!token) {
@@ -19,8 +21,9 @@ const verifyIsLoggedIn = (req, res, next) => {
     }
 }
 
-/* 检测user是不是admin，如果不是就不给权限去products */
 const verifyIsAdmin = (req, res, next) => {
+    next()
+    return // to do: remove later
     if(req.user && req.user.isAdmin) {
         next()
     } else {

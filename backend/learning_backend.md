@@ -34,6 +34,13 @@
 16. npm i concurrently
     - 目前也不太懂，看起像是组合键
 
+# mongodb搭建
+- 就是正常创建
+- 创建user
+- network access 可以选择某个IP接入，test可以选择无限制
+
+- Database -> connect -> connect to application
+
 # 一些解释
 ## 中英互译  
 - square braces 中括号  
