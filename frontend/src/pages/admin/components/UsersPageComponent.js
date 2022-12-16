@@ -4,11 +4,17 @@ import AdminLinksComponent from "../../../components/admin/AdminLinksComponent";
 
 import { useState, useEffect } from "react";
 
-const UsersPageComponent = ({ fetchUsers }) => {
+const UsersPageComponent = ({ fetchUsers, deleteUser }) => {
   const [users, setUsers] = useState([]);
+  const [userDeleted, setUserDeleted] = useState(false);
 
-  const deleteHandler = () => {
-    if (window.confirm("Are you sure?")) alert("User deleted!");
+  const deleteHandler = async (userId) => {
+    if (window.confirm("Are you sure?")) {
+      const data = await deleteUser(userId);
+      if (data === 'user removed') {
+        setUserDeleted(!userDeleted)
+      }
+    }
   };
 
   useEffect(() => {
@@ -20,9 +26,10 @@ const UsersPageComponent = ({ fetchUsers }) => {
           er.response.data.message ? er.response.data.message : er.response.data
         )
       );
-     /* 下面这行， will execute this abort controller and abort function*/
+    /* 下面这行， will execute this abort controller and abort function*/
     return () => abctrl.abort();
-  }, []);
+    /* 这行代码，加上上面的，就是delete之后，然后html render一次，就不用刷新页面让用户消失了 */
+  }, [userDeleted]);
 
   return (
     <Row className="m-5">
@@ -63,7 +70,7 @@ const UsersPageComponent = ({ fetchUsers }) => {
                     <Button
                       variant="danger"
                       className="btn-sm"
-                      onClick={deleteHandler}
+                      onClick={() => deleteHandler(user._id)}
                     >
                       <i className="bi bi-x-circle"></i>
                     </Button>
