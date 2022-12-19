@@ -64,7 +64,7 @@ const loginUser = async (req, res, next) => {
     }
 
     /* find one user, if user found then, do something， else：没有found 就回复wrong credentials */
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).orFail;
     // compare passwords
     if (user && comparePasswords(password, user.password)) {
       let cookieParams = {
