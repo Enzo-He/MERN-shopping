@@ -64,7 +64,7 @@ const loginUser = async (req, res, next) => {
     }
 
     /* find one user, if user found then, do something， else：没有found 就回复wrong credentials */
-    const user = await User.findOne({ email }).orFail;
+    const user = await User.findOne({ email }).orFail();
     // compare passwords
     if (user && comparePasswords(password, user.password)) {
       let cookieParams = {
@@ -78,22 +78,31 @@ const loginUser = async (req, res, next) => {
         cookieParams = { ...cookieParams, maxAge: 1000 * 60 * 60 * 24 * 7 }; // 1000=1ms
       }
 
-      return res.cookie(
-        "access_token",
-        generateAuthToken(
-          user._id,
-          user.name,
-          user.lastName,
-          user.email,
-          user.isAdmin
-        ),
-        cookieParams
-      ).json({
-        success: "user logged in",
-        userLoggedIn: { _id: user._id, name: user.name, lastName: user.lastName, email: user.email, isAdmin: user.isAdmin, doNotLogout }
-      });
+      return res
+        .cookie(
+          "access_token",
+          generateAuthToken(
+            user._id,
+            user.name,
+            user.lastName,
+            user.email,
+            user.isAdmin
+          ),
+          cookieParams
+        )
+        .json({
+          success: "user logged in",
+          userLoggedIn: {
+            _id: user._id,
+            name: user.name,
+            lastName: user.lastName,
+            email: user.email,
+            isAdmin: user.isAdmin,
+            doNotLogout,
+          },
+        });
     } else {
-      return res.status(401).send("wrong credentials")
+      return res.status(401).send("wrong credentials");
     }
   } catch (err) {
     next(err);
