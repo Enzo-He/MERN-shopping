@@ -1,7 +1,11 @@
 import { Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { logout } from "../../redux/actions/userActions";
+import { useDispatch } from "react-redux";
 
 const AdminLinksComponent = () => {
+  const dispatch = useDispatch()
+
   return (
     <Navbar bg="light" variant="light">
       {/* bootstrap里Navs -> vertical 扒一个vertical的navbar */}
@@ -21,7 +25,7 @@ const AdminLinksComponent = () => {
         <LinkContainer to="/admin/analytics">
           <Nav.Link>Analytics</Nav.Link>
         </LinkContainer>
-        <Nav.Link>Logout</Nav.Link>
+        <Nav.Link onClick={() => dispatch(logout())}>Logout</Nav.Link>
       </Nav>
     </Navbar>
   );
