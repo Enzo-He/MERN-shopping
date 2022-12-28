@@ -82,6 +82,7 @@ const RegisterPageComponent = ({ registerUserApiRequest,
                 Please enter a name
               </Form.Control.Feedback>
             </Form.Group>
+
             <Form.Group className="mb-3" controlId="formBasicLastName">
               <Form.Label>Your last name</Form.Label>
               <Form.Control
@@ -94,6 +95,7 @@ const RegisterPageComponent = ({ registerUserApiRequest,
                 Please enter your last name
               </Form.Control.Feedback>
             </Form.Group>
+
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
@@ -106,6 +108,7 @@ const RegisterPageComponent = ({ registerUserApiRequest,
                 Please anter a valid email address
               </Form.Control.Feedback>
             </Form.Group>
+            
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
