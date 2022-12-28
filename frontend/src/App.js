@@ -38,14 +38,14 @@ import ScrollToTop from "./utils/ScrollToTop";
 function App() {
   return (
     <BrowserRouter>
-    <ScrollToTop />
+      <ScrollToTop />
       <HeaderComponent />
       <Routes>
         <Route element={<RoutesWithUserChatComponent />}>
           {/* publicly available routes: */}
           <Route path="/" element={<HomePage />} />
           <Route path="/product-list" element={<ProductListPage />} />
-          <Route path="/product-details" element={<ProductDetailsPage />} />
+
           <Route path="/product-details/:id" element={<ProductDetailsPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -93,4 +93,3 @@ function App() {
 }
 
 export default App;
-
