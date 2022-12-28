@@ -19,6 +19,8 @@ import { useDispatch, useSelector } from "react-redux";
 const HeaderComponent = () => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userRegisterLogin);
+  const itemsCount = useSelector((state) => state.cart.itemsCount);
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -34,9 +36,7 @@ const HeaderComponent = () => {
                 <Dropdown.Item>Cars</Dropdown.Item>
                 <Dropdown.Item>Books</Dropdown.Item>
               </DropdownButton>
-              {/* search input, form就是搞input之类的 */}
               <Form.Control type="text" placeholder="Search in shop ..." />
-              {/* search放大镜的icon， from boostrap icons */}
               <Button variant="warning">
                 <i className="bi bi-search text-dark"></i>
               </Button>
@@ -51,8 +51,12 @@ const HeaderComponent = () => {
                 </Nav.Link>
               </LinkContainer>
             ) : userInfo.name && !userInfo.isAdmin ? (
-              /* 下面的.charAt（0）就是截取第一个字母 */
-              <NavDropdown title={`${userInfo.name.charAt(0)} ${userInfo.lastName.charAt(0)}`} id="collasible-nav-dropdown">
+              <NavDropdown
+                title={`${userInfo.name.charAt(0)} ${userInfo.lastName.charAt(
+                  0
+                )}`}
+                id="collasible-nav-dropdown"
+              >
                 <NavDropdown.Item
                   eventKey="/user/my-orders"
                   as={Link}
@@ -80,9 +84,8 @@ const HeaderComponent = () => {
 
             <LinkContainer to="/cart">
               <Nav.Link>
-                {/* badge是cart边上的小红点显示物品数量 */}
                 <Badge pill bg="danger">
-                  2
+                  {itemsCount === 0 ? "" : itemsCount}
                 </Badge>
                 <i className="bi bi-cart-dash"></i>
                 <span className="ms-1">CART</span>
@@ -96,4 +99,3 @@ const HeaderComponent = () => {
 };
 
 export default HeaderComponent;
-
