@@ -209,3 +209,8 @@ const ProductDetailsPage = () => {
 
 export default ProductDetailsPage;
 ```
+
+# 付款相关设置
+## PayPal
+1. go to developer.paypal -> login -> 点击头像 -> dashboard -> app & credentials -> create app
+2. Copy一下 client ID 随后会用到 ATs4szzBbA0y066jr1O0oBqm9xVvUZJmoY9bbp8ebpqlwf5GOqpeqHQv78GtNuBiXUpW5PnrCdpsFRho
