@@ -16,6 +16,8 @@ indentation 缩进
    - npm install recharts
    <!-- 用来make api requests -->
    - npm i axios
+   <!-- PayPal -->
+   - npm i @paypal/paypal-js
 
 - 如果是从 GitHub 上搞得，那就直接运行 npm install，会根据 package.json 来安装所有的 dependencies
 
@@ -211,6 +213,8 @@ export default ProductDetailsPage;
 ```
 
 # 付款相关设置
+
 ## PayPal
+
 1. go to developer.paypal -> login -> 点击头像 -> dashboard -> app & credentials -> create app
-2. Copy一下 client ID 随后会用到 ATs4szzBbA0y066jr1O0oBqm9xVvUZJmoY9bbp8ebpqlwf5GOqpeqHQv78GtNuBiXUpW5PnrCdpsFRho
+2. Copy 一下 client ID 随后会用到 ATs4szzBbA0y066jr1O0oBqm9xVvUZJmoY9bbp8ebpqlwf5GOqpeqHQv78GtNuBiXUpW5PnrCdpsFRho
