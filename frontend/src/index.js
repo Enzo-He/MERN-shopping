@@ -9,6 +9,10 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 
 ReactDOM.render(
+  /*   (window.$ = window.jquery = require("./node_modules/jquery")),
+  (window.dt = require("./node_modules/datatables.net")()),
+  window.$("#example").DataTable(), */
+
   <Provider store={store}>
     <React.StrictMode>
       <App />
@@ -21,4 +25,3 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-

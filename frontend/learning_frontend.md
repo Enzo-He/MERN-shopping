@@ -18,6 +18,8 @@ indentation 缩进
    - npm i axios
    <!-- PayPal -->
    - npm i @paypal/paypal-js
+   <!-- jQuery 用于sort table-->
+   - npm install jquery
 
 - 如果是从 GitHub 上搞得，那就直接运行 npm install，会根据 package.json 来安装所有的 dependencies
 
